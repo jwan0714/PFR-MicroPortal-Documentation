@@ -1,11 +1,13 @@
-# nf-core/rnaseq: Usage
-
+# nf-core/rnaseq on Powerplant: Usage
+#### Author: Jack Wang
 ## Table of contents
+
 
 <!-- Install Atom plugin markdown-toc-auto for this ToC to auto-update on save -->
 <!-- TOC START min:2 max:3 link:true asterisk:true update:true -->
 * [Table of contents](#table-of-contents)
 * [Introduction](#introduction)
+* [Installation](#Installation)
 * [Running the pipeline](#running-the-pipeline)
   * [Updating the pipeline](#updating-the-pipeline)
   * [Reproducibility](#reproducibility)
@@ -18,7 +20,6 @@
   * [Default "`gene_name`" Attribute Type](#default-attribute-type)
   * [Extra Gene Names or IDs](#extra-gene-names-or-ids)
   * [Default "`exon`" Attribute](#default-exon-type)
-* [Transcriptome mapping with Salmon](#transcriptome-mapping-with-salmon)
 * [Alignment tool](#alignment-tool)
 * [Reference genomes](#reference-genomes)
   * [`--genome` (using iGenomes)](#--genome-using-igenomes)
@@ -34,47 +35,18 @@
     * [Create compressed (tar.gz) STAR indices](#create-compressed-tar-gz-star-indices)
     * [Create compressed (tar.gz) HiSat2 indices](#create-compressed-tar-gz-hisat2-indices)
     * [Create compressed (tar.gz) Salmon indices](#create-compressed-tar-gz-salmon-indices)
-* [Adapter Trimming](#adapter-trimming)
-  * [`--clip_r1 [int]`](#--clip_r1-int)
-  * [`--clip_r2 [int]`](#--clip_r2-int)
-  * [`--three_prime_clip_r1 [int]`](#--three_prime_clip_r1-int)
-  * [`--three_prime_clip_r2 [int]`](#--three_prime_clip_r2-int)
-  * [`--trim_nextseq [int]`](#--trim_nextseq)
-  * [`--skipTrimming`](#--skipTrimming)
-* [Ribosomal RNA removal](#ribosomal-rna-removal)
-  * [`--removeRiboRNA`](#--removeRiboRNA)
-  * [`--save_nonrRNA_reads`](#--save_nonrrna_reads)
-  * [`--rRNA_database_manifest`](#--rrna_database_manifest)
-* [Library Prep Presets](#library-prep-presets)
-  * [`--pico`](#--pico)
-* [Skipping QC steps](#skipping-qc-steps)
-* [Job resources](#job-resources)
-  * [Automatic resubmission](#automatic-resubmission)
-  * [Custom resource requests](#custom-resource-requests)
-* [AWS Batch specific parameters](#aws-batch-specific-parameters)
-  * [`--awsqueue`](#--awsqueue)
-  * [`--awsregion`](#--awsregion)
-* [Other command line parameters](#other-command-line-parameters)
-  * [`--outdir`](#--outdir)
-  * [`--email`](#--email)
-  * [`--email_on_fail`](#--email_on_fail)
-  * [`-name`](#-name)
-  * [`-resume`](#-resume)
-  * [`-c`](#-c)
-  * [`--custom_config_version`](#--custom_config_version)
-  * [`--custom_config_base`](#--custom_config_base)
-  * [`--max_memory`](#--max_memory)
-  * [`--max_time`](#--max_time)
-  * [`--max_cpus`](#--max_cpus)
-  * [`--hisat_build_memory`](#--hisat_build_memory)
-  * [`--sampleLevel`](#--samplelevel)
-  * [`--plaintext_email`](#--plaintext_email)
-  * [`--monochrome_logs`](#--monochrome_logs)
-  * [`--multiqc_config`](#--multiqc_config)
-* [Stand-alone scripts](#stand-alone-scripts)
+* [Output](#Output)
+* [Troubleshooting](#Troubleshooting)
 <!-- TOC END -->
 
 ## Introduction
+### What's nf-core
+nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow.
+
+For facilities it provides highly automated and optimized pipelines that guaranty reproducibility of results for their users. Single users profit from portable, documented and easy to use workflows.
+### What's Nextflow
+Nextflow is a workflow manager. It has been developed specifically to ease the creation and execution of bioinformatics pipelines.
+Whether your pipeline is a simple BLAST execution or a complex genome annotation pipeline, you can build it with Nextflow.
 
 Nextflow handles job submissions on SLURM or other environments, and supervises running the jobs. Thus the Nextflow process must run until the pipeline is finished. We recommend that you put the process running in the background through `screen` / `tmux` or similar tool. Alternatively you can run nextflow within a cluster job submitted your job scheduler.
 
