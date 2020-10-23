@@ -49,10 +49,14 @@ Nextflow is a workflow manager. It has been developed specifically to ease the c
 Whether your pipeline is a simple BLAST execution or a complex genome annotation pipeline, you can build it with Nextflow.
 ### What's nf-core/rnaseq
 **nf-core/rnaseq** is a bioinformatics analysis pipeline used for RNA sequencing data.
+
+The workflow processes raw data from FastQ inputs (FastQC, Trim Galore!), aligns the reads (STAR or HiSAT2), generates counts relative to genes (featureCounts, StringTie) or transcripts (Salmon, tximport) and performs extensive quality-control on the results (RSeQC, Qualimap, dupRadar, Preseq, edgeR, MultiQC).
 ```bash
 NXF_OPTS='-Xms1g -Xmx4g'
 ```
-
+## Installation on Powerplant
+nf-core/rnaseq can run on both local/virtual environment. For the sake of system environment setup, senstive data security and management, maintaining transparancy and easy to share, we recommend using powerplant via putty (SSH client) to install and run nf-core/rnaseq.
+### Powerplant usage 
 ## Running the pipeline
 
 The typical command for running the pipeline is as follows:
