@@ -63,6 +63,7 @@ nf-core/rnaseq can run on both local/virtual environment. For the sake of system
 Before any pipeline/workflow installation, user should read [powerPlant User Guide](https://powerplant.pfr.co.nz/guide/) carefully, important topics relate to nf-core/rnaseq installation and running on powerPlant, such as: [Storage](https://powerplant.pfr.co.nz/guide/storage), [Putty](https://powerplant.pfr.co.nz/guide/cli), [Anaconda](https://powerplant.pfr.co.nz/guide/anaconda) and [Environment Modules](https://powerplant.pfr.co.nz/guide/modules) etc.
 
 ### Installation preparation
+User should create project folder under /powerplant/workspace/hra-xxx 
 ## Running the pipeline
 
 The typical command for running the pipeline is as follows:
