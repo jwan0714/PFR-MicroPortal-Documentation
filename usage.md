@@ -9,7 +9,7 @@
 * [Introduction](#introduction)
 * [Installation](#Installation)
   * [powerPlant usage](#powerPlant usage)
-  * [Installation preparation](#Installation preparation)
+  * [Updating the pipeline](#updating-the-pipeline)
 * [Running the pipeline](#running-the-pipeline)
   * [Updating the pipeline](#updating-the-pipeline)
   * [Reproducibility](#reproducibility)
