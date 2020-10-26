@@ -86,7 +86,7 @@ Alternatively, user can create a new environment with both nextflow and nf-core/
 ```bash
 conda create --name hraxxx_nf-core python=3 nf-core nextflow
 ```
-Then you can activate this environment and run the pipeline without the installation in the following sections.
+Then you can activate this environment and run the pipeline without the installation in the next two sections.
 
 ### Nextflow Installation
 Install nextflow to nf-core folder
@@ -99,6 +99,12 @@ mkdir -p bin
 mv nextflow /powerplant/workspace/hraxxx/nf-core/bin
 ```
 ### nf-core Installation
+In the same nf-core folder, you can install nf-core/tools from PYPI using pip
+```bash
+pip install nf-core
+```
+Then you can type ```nf-core``` to check if it's successfully installed, the nf-core logo, and a list of options and commands should be displayed. 
+[nf-core/tools guide](https://github.com/nf-core/tools) has more usage information. 
 
 ## Running the pipeline
 
