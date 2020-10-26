@@ -54,9 +54,10 @@ The workflow processes raw data from FastQ inputs (FastQC, Trim Galore!), aligns
 ```bash
 NXF_OPTS='-Xms1g -Xmx4g'
 ```
-## Installation on Powerplant
-nf-core/rnaseq can run on both local/virtual environment. For the sake of system environment setup, senstive data security and management, maintaining transparancy and easy to share, we recommend using powerplant via putty (SSH client) to install and run nf-core/rnaseq.
+## Installation on powerPlant
+nf-core/rnaseq can run on both local/virtual environment. For the sake of system environment setup, sensitive data security and management, maintaining transparency and easy to share, we recommend using powerPlant via putty (SSH client) to install and run nf-core/rnaseq analysis.
 ### Powerplant usage 
+Before any pipeline/workflow installation, user should read [powerPlant User Guide](https://powerplant.pfr.co.nz/guide/) carefully, important topics relate to nf-core/rnaseq installation and running on powerPlant, such as: [Storage](https://powerplant.pfr.co.nz/guide/storage), [Putty](https://powerplant.pfr.co.nz/guide/cli), [Anaconda](https://powerplant.pfr.co.nz/guide/anaconda) and [Environment Modules](https://powerplant.pfr.co.nz/guide/modules). 
 ## Running the pipeline
 
 The typical command for running the pipeline is as follows:
