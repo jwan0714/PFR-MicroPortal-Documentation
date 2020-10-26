@@ -15,7 +15,7 @@
   * [Installation preparation](#Installation-preparation)
   * [Nextflow Installation](#Nextflow-Installation)
   * [nf-core Installation](#nf-core-Installation)  
-* [Pipeline configuration & pre-running setup](#pipeline-configuration-&-pre-running-setup)
+* [Pipeline configuration & pre-running setup](#pipeline-configuration&pre-running-setup)
   * [Pipeline configuration](#Pipeline-configuration)
   * [Reference genomes](#Reference-genomes)
   * [Pre-running setup](#Pre-running-setup)
