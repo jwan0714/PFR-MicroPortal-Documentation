@@ -106,6 +106,12 @@ pip install nf-core
 Then you can type ```nf-core``` to check if it's successfully installed, the nf-core logo, and a list of options and commands should be displayed. 
 [nf-core/tools guide](https://github.com/nf-core/tools) has more usage information. 
 
+### nf-core/rnaseq Installation
+User can download specific pipelines with the command
+```bash
+$ nf-core download rnaseq
+```
+
 ## Running the pipeline
 
 The typical command for running the pipeline is as follows:
