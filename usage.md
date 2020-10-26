@@ -99,7 +99,7 @@ mkdir -p bin
 mv nextflow /powerplant/workspace/hraxxx/nf-core/bin
 ```
 ### nf-core Installation
-In the same nf-core folder, you can install nf-core/tools from PYPI using pip
+In the same nf-core folder, you can install nf-core/tools from PYPI using pip:
 ```bash
 pip install nf-core
 ```
@@ -116,7 +116,7 @@ A pre-built nf-core/rnaseq pipeline using malus ambrosia data (/input/genomic/pl
 You can review the output in the results and work directory.
 This pipeline can be used as a reference in the pipeline usage guide. 
 ### Pipeline configuration
-nf-core [pipeline configuration guide](https://nf-co.re/usage/configuration) has the details of how to configure Nextflow to work on your system
+nf-core [pipeline configuration guide](https://nf-co.re/usage/configuration) has the details of how to configure Nextflow to work on your system.
 ### Reference genomes
 By default, the pipeline uses [iGenomes](https://github.com/nf-core/rnaseq/blob/master/conf/igenomes.config) references. To run the pipeline, you must specify which to use with the --genome flag. You can use your own reference files if they are not part of the iGenomes resource. 
 Create name.config file in /nf-core-rnaseq-1.4.2/configs directory, the syntax for this .config file is as follows:
@@ -141,7 +141,8 @@ And type ``` --genome Name_You_Want ``` to specify the reference genomes you jus
 
 The config files used in the malus ambrosia rnaseq pipeline are available in this repository. 
 ### Pre-running setup
-The genome fasta files often contain a long and complex string filename, because the pipeline uses the input filename as results filename, the output might be difficult to read. We can create soft-link with shorter and simplified filename before provide it to the pipeline. By using this way, we can also easily manage the input genome fasta files.   
+The genome fasta files often contain a long and complex string filename, because the pipeline uses the input filename as results filename, the output might be difficult to read. We can create soft-link with shorter and simplified filename before provide it to the pipeline.
+By using this way, we can also easily manage the input genome fasta files.   
 Create the soft-link directory under project_name folder:
 ```bash
 mkdir -p fasta_soft-link
@@ -155,18 +156,19 @@ For instance, one of the soft-links used in the malus ambrosia rnaseq pipeline w
 ```bash
 ln -s /input/genomic/plant/Malus/domestica/AGRF_CAGRF17242_CCADVANXX/2_ambrosiaB2_CCADVANXX_GTTTCGGA_L008_R1.fastq.gz /powerplant/workspace/hrajaw/Genome_soft_link/1_ambrosiaB1_R2.fastq.gz
 ```
-And the soft-link files are available in /powerplant/workspace/hrajaw/nf-core/Genome_soft_link
+And the soft-link files are available in /powerplant/workspace/hrajaw/nf-core/Genome_soft_link.
+### 
 ## Running the pipeline
  
-The typical command for running the pipeline is as follows:
+The typical command for running the pipeline with pair-ended data is as follows:
 
 ```bash
-nextflow run nf-core/rnaseq --reads '*_R{1,2}.fastq.gz' --genome GRCh37 -profile docker
+nextflow run nf-core/rnaseq -profile conda --reads '/soft-link dir/*_R{1,2}.fastq.gz' -c /configs/nextflow.config --genome Name_You_Want --skipBiotypeQC --outdir /project_name
 ```
 
-This will launch the pipeline with the `docker` configuration profile. See below for more information about profiles.
+This will launch the pipeline with the `conda` configuration profile. See below for more information about profiles.
 
-Note that the pipeline will create the following files in your working directory:
+Note that the pipeline will create the following files in your specified directory:
 
 ```bash
 work            # Directory containing the nextflow working files
