@@ -8,6 +8,8 @@
 * [Table of contents](#table-of-contents)
 * [Introduction](#introduction)
 * [Installation](#Installation)
+  * [powerPlant usage](#powerPlant usage)
+  * [Installation preparation](#Installation preparation)
 * [Running the pipeline](#running-the-pipeline)
   * [Updating the pipeline](#updating-the-pipeline)
   * [Reproducibility](#reproducibility)
@@ -54,10 +56,11 @@ The workflow processes raw data from FastQ inputs (FastQC, Trim Galore!), aligns
 ```bash
 NXF_OPTS='-Xms1g -Xmx4g'
 ```
-## Installation on powerPlant
+## Installation
 nf-core/rnaseq can run on both local/virtual environment. For the sake of system environment setup, sensitive data security and management, maintaining transparency and easy to share, we recommend using powerPlant via putty (SSH client) to install and run nf-core/rnaseq analysis.
-### Powerplant usage 
-Before any pipeline/workflow installation, user should read [powerPlant User Guide](https://powerplant.pfr.co.nz/guide/) carefully, important topics relate to nf-core/rnaseq installation and running on powerPlant, such as: [Storage](https://powerplant.pfr.co.nz/guide/storage), [Putty](https://powerplant.pfr.co.nz/guide/cli), [Anaconda](https://powerplant.pfr.co.nz/guide/anaconda) and [Environment Modules](https://powerplant.pfr.co.nz/guide/modules). 
+### powerPlant usage 
+Before any pipeline/workflow installation, user should read [powerPlant User Guide](https://powerplant.pfr.co.nz/guide/) carefully, important topics relate to nf-core/rnaseq installation and running on powerPlant, such as: [Storage](https://powerplant.pfr.co.nz/guide/storage), [Putty](https://powerplant.pfr.co.nz/guide/cli), [Anaconda](https://powerplant.pfr.co.nz/guide/anaconda) and [Environment Modules](https://powerplant.pfr.co.nz/guide/modules) etc.
+### Installation preparation
 ## Running the pipeline
 
 The typical command for running the pipeline is as follows:
