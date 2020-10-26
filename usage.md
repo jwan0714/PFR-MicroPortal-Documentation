@@ -31,7 +31,7 @@
   * [Extra Gene Names or IDs](#extra-gene-names-or-ids)
   * [Default "`exon`" Attribute](#default-exon-type)
 * [Output](#Output)
- * [FeatureCounts' merged counts](#FeatureCounts'-merged-counts)
+ * [FeatureCounts merged counts](#FeatureCounts-merged-counts)
 * [Troubleshooting](#Troubleshooting)
 <!-- TOC END -->
 
@@ -267,7 +267,7 @@ results directory. This is to try to conserve disk space.
 
 These files can be found in the pipeline `work` directory if needed.
 
-### FeatureCounts' merged counts
+### FeatureCounts merged counts
 
 The pipeline's merged counts function might not work on multiple pair-ended data. 
 A script is provided to solve this issue, you can run this script in the same directory with the gene_counts files.
