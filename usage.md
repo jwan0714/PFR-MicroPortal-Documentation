@@ -63,7 +63,43 @@ nf-core/rnaseq can run on both local/virtual environment. For the sake of system
 Before any pipeline/workflow installation, user should read [powerPlant User Guide](https://powerplant.pfr.co.nz/guide/) carefully, important topics relate to nf-core/rnaseq installation and running on powerPlant, such as: [Storage](https://powerplant.pfr.co.nz/guide/storage), [Putty](https://powerplant.pfr.co.nz/guide/cli), [Anaconda](https://powerplant.pfr.co.nz/guide/anaconda) and [Environment Modules](https://powerplant.pfr.co.nz/guide/modules) etc.
 
 ### Installation preparation
-User should create project folder under /powerplant/workspace/hra-xxx 
+User should create project folder under /powerplant/workspace/hra-xxx
+```bash
+mkdir -p nf-core
+mkdir -p project_name
+```
+Any pipeline related contents should be installed in nf-core folder, the results/output can be saved in project_name folder. By default, the nf-core/rnaseq pipeline output saves to the results and work directory. User can type ``` --outdir /powerplant/workspace/hra-xxx/project_name ```to save results in the specific directory.
+
+Installing and running nf-core/rnaseq on powerPlant requires virtual environment (conda/singularity/docker). Anaconda is avaliable on powerPlant, simply type 
+```bash 
+module load conda 
+``` 
+For new user to create a new environment, using command 
+```bash
+conda create --name hraxxx python=3 
+```
+Then activate the environment
+```bash
+conda activate hraxxx
+```
+Alternatively, user can create a new environment with both nextflow and nf-core/tools
+```bash
+conda create --name hraxxx_nf-core python=3 nf-core nextflow
+```
+Then you can activate this environment and run the pipeline without the installation in the following sections.
+
+### Nextflow Installation
+Install nextflow to nf-core folder
+```bash
+curl -fsSL get.nextflow.io | bash
+```
+Then add Nextflow binary to your user's PATH (make bin folder first)
+```bash
+mkdir -p bin
+mv nextflow /powerplant/workspace/hraxxx/nf-core/bin
+```
+### nf-core Installation
+
 ## Running the pipeline
 
 The typical command for running the pipeline is as follows:
