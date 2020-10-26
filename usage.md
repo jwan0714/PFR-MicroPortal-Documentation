@@ -74,7 +74,7 @@ Installing and running nf-core/rnaseq on powerPlant requires virtual environment
 ```bash 
 module load conda 
 ``` 
-For new user to create a new environment, using command 
+For new user to create a new environment, using the command: 
 ```bash
 conda create --name hraxxx python=3 
 ```
@@ -107,7 +107,7 @@ Then you can type ```nf-core``` to check if it's successfully installed, the nf-
 [nf-core/tools guide](https://github.com/nf-core/tools) has more usage information. 
 
 ### nf-core/rnaseq Installation
-User can download specific pipelines with the command
+User can download specific pipelines with the command:
 ```bash
 $ nf-core download rnaseq
 ```
@@ -139,19 +139,23 @@ When running the pipeline, type ``` -c /powerplant/workspace/hrajaw/nf-core-rnas
 
 And type ``` --genome Name_You_Want ``` to specify the reference genomes you just configured. 
 
-The config files used for malus ambrosia rnaseq pipeline are available in the same repository. 
+The config files used in the malus ambrosia rnaseq pipeline are available in this repository. 
 ### Pre-running setup
-The genome fasta files often contain a long and complex string filename, because the pipeline uses the input filename as results filename, we can create soft-link with shorter and simplified filename before provide it to the pipeline. 
-Create the soft-link directory under project_name folder
+The genome fasta files often contain a long and complex string filename, because the pipeline uses the input filename as results filename, the output might be difficult to read. We can create soft-link with shorter and simplified filename before provide it to the pipeline. By using this way, we can also easily manage the input genome fasta files.   
+Create the soft-link directory under project_name folder:
 ```bash
 mkdir -p fasta_soft-link
 cd fasta_soft-link
 ```
-Then, create the soft-link files with command.
+Then, create the soft-link files with the command:
 ```bash
 ln -s [file_path/file_name] [virtual_file_path/soft-link_file_name]
 ```
-For instance, the soft-link used in
+For instance, one of the soft-links used in the malus ambrosia rnaseq pipeline was generated with the command:
+```bash
+ln -s /input/genomic/plant/Malus/domestica/AGRF_CAGRF17242_CCADVANXX/2_ambrosiaB2_CCADVANXX_GTTTCGGA_L008_R1.fastq.gz /powerplant/workspace/hrajaw/Genome_soft_link/1_ambrosiaB1_R2.fastq.gz
+```
+And the soft-link files are available in /powerplant/workspace/hrajaw/nf-core/Genome_soft_link
 ## Running the pipeline
  
 The typical command for running the pipeline is as follows:
