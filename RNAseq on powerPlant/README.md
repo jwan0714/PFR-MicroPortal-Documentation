@@ -290,6 +290,6 @@ The python merge script used in malus ambrosia rnaseq pipeline is available in t
 
 You can visit the official [nf-core](https://github.com/nf-core/tools) and [nf-core/rnaseq](https://github.com/nf-core/rnaseq/tree/master/docs) user guide for more usage details.
 
-If you have issues that are not mentioned in [Troubleshooting](https://nf-co.re/usage/troubleshooting) or the official documentations, feel free to contact nf-core's dev team via the [Slack](https://nf-co.re/join/slack) channel or me (jack.wang@plantandfood.co.nz).
+If you have issues that are not mentioned in [Troubleshooting](https://nf-co.re/usage/troubleshooting) or the official documentation, feel free to contact nf-core's dev team via the [Slack](https://nf-co.re/join/slack) channel or me (jack.wang@plantandfood.co.nz).
 
 
