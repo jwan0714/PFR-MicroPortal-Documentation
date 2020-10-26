@@ -63,7 +63,7 @@ nf-core/rnaseq can run on both local/virtual environment. For the sake of system
 Before any pipeline/workflow installation, user should read [powerPlant User Guide](https://powerplant.pfr.co.nz/guide/) carefully, important topics relate to nf-core/rnaseq installation and running on powerPlant, such as: [Storage](https://powerplant.pfr.co.nz/guide/storage), [Putty](https://powerplant.pfr.co.nz/guide/cli), [Anaconda](https://powerplant.pfr.co.nz/guide/anaconda) and [Environment Modules](https://powerplant.pfr.co.nz/guide/modules) etc.
 
 ### Installation preparation
-User should create project folder under /powerplant/workspace/hra-xxx
+You can create project directories under /powerplant/workspace/hra-xxx
 ```bash
 mkdir -p nf-core
 mkdir -p project_name
@@ -111,9 +111,32 @@ User can download specific pipelines with the command
 ```bash
 $ nf-core download rnaseq
 ```
+## Pipeline configuration & pre-running setup
+A pre-built nf-core/rnaseq pipeline using malus ambrosia data (/input/genomic/plant/Malus/domestica/AGRF_CAGRF17242_CCADVANXX) is avaliable in /powerplant/workspace/hrajaw/nf-core. You can review the output in the results and work directory. This pipeline can be used as a reference in the pipeline usage guide. 
+### Pipeline configuration
+nf-core [pipeline configuration guide](https://nf-co.re/usage/configuration) has the details of how to configure Nextflow to work on your system
+### Reference genomes
+By default, the pipeline uses [iGenomes](https://github.com/nf-core/rnaseq/blob/master/conf/igenomes.config) references. To run the pipeline, you must specify which to use with the --genome flag. You can use your own reference files if they are not part of the iGenomes resource. 
+Create name.config file in /nf-core-rnaseq-1.4.2/configs directory, the syntax for this .config file is as follows:
+```bash
+params {
+  genomes {
+    'Name_You_Want' {
+      star    = '<path to the star index folder>'
+      fasta   = '<path to the genome fasta file>' // Used if no star index given
+      gtf     = '<path to the genome gtf file>'
+      bed12   = '<path to the genome bed file>' // Generated from GTF if not given
+    }
+    // Any number of additional genomes, key is used with --genome
+  }
+}
+```
+Then modify nextflow.config file in the same directory by adding ``` includeConfig("name.config") ```. 
+When running the pipeline, type ``` -c /powerplant/workspace/hrajaw/nf-core-rnaseq-1.4.2/configs/nextflow.config ``` to specify the path to the config file. And type ``` --genome Name_You_Want ``` to specify the reference genomes you just configured.   
+
 
 ## Running the pipeline
-
+ 
 The typical command for running the pipeline is as follows:
 
 ```bash
