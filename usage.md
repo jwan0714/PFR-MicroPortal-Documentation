@@ -1,4 +1,4 @@
-# nf-core/rnaseq on Powerplant: Usage
+# nf-core/rnaseq on powerPlant: Usage
 #### Author: Jack Wang
 ## Table of contents
 
@@ -7,11 +7,19 @@
 <!-- TOC START min:2 max:3 link:true asterisk:true update:true -->
 * [Table of contents](#table-of-contents)
 * [Introduction](#introduction)
+  * [What's nf-core](#What's-nf-core)
+  * [What's Nextflow](#What's-Nextflow)
+  * [What's nf-core/rnaseq](#What's-nf-core/rnaseq)
 * [Installation](#Installation)
   * [powerPlant usage](#powerPlant-usage)
   * [Installation preparation](#Installation-preparation)
+  * [Nextflow Installation](#Nextflow-Installation)
+  * [nf-core Installation](#nf-core-Installation)  
+* [Pipeline configuration & pre-running setup](#Pipeline-configuration-&-pre-running-setup)
+  * [Pipeline configuration](#Pipeline-configuration)
+  * [Reference genomes](#Reference-genomes)
+  * [Pre-running setup](#Pre-running-setup)
 * [Running the pipeline](#running-the-pipeline)
-  * [Updating the pipeline](#updating-the-pipeline)
   * [Reproducibility](#reproducibility)
 * [Main arguments](#main-arguments)
   * [`-profile`](#-profile)
@@ -23,6 +31,7 @@
   * [Extra Gene Names or IDs](#extra-gene-names-or-ids)
   * [Default "`exon`" Attribute](#default-exon-type)
 * [Output](#Output)
+ * [FeatureCounts' merged counts](#FeatureCounts'-merged-counts)
 * [Troubleshooting](#Troubleshooting)
 <!-- TOC END -->
 
@@ -31,10 +40,14 @@
 nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow.
 
 For facilities it provides highly automated and optimized pipelines that guaranty reproducibility of results for their users. Single users profit from portable, documented and easy to use workflows.
+
 ### What's Nextflow
+
 Nextflow is a workflow manager. It has been developed specifically to ease the creation and execution of bioinformatics pipelines.
 Whether your pipeline is a simple BLAST execution or a complex genome annotation pipeline, you can build it with Nextflow.
+
 ### What's nf-core/rnaseq
+
 **nf-core/rnaseq** is a bioinformatics analysis pipeline used for RNA sequencing data.
 
 The workflow processes raw data from FastQ inputs (FastQC, Trim Galore!), aligns the reads (STAR or HiSAT2), generates counts relative to genes (featureCounts, StringTie) or transcripts (Salmon, tximport) and performs extensive quality-control on the results (RSeQC, Qualimap, dupRadar, Preseq, edgeR, MultiQC).
@@ -151,7 +164,9 @@ ln -s /input/genomic/plant/Malus/domestica/AGRF_CAGRF17242_CCADVANXX/2_ambrosiaB
 And the soft-link files are available in /powerplant/workspace/hrajaw/nf-core/Genome_soft_link.
 
 ## Running the pipeline
- 
+
+Using appropriate server host to run the pipeline, see [powerPlant Architecture](https://powerplant.pfr.co.nz/guide/architecture) for details.
+
 The typical command for running the pipeline with pair-ended data is as follows:
 
 ```bash
@@ -252,7 +267,7 @@ results directory. This is to try to conserve disk space.
 
 These files can be found in the pipeline `work` directory if needed.
 
-### FeatureCounts merged counts
+### FeatureCounts' merged counts
 
 The pipeline's merged counts function might not work on multiple pair-ended data. 
 A script is provided to solve this issue, you can run this script in the same directory with the gene_counts files.
@@ -260,15 +275,14 @@ The syntax for this python script is as follows:
 ```bash
 import pandas as pd
 file1 = pd.read_csv('[gene_counts output filename]Aligned.sortedByCoord.out_gene.featureCounts.txt', sep="\t", skiprows=1,usecols =['Geneid','gene_counts_output_ filenameAligned.sortedByCoord.out.bam'])
-.                                         
-.
-.
-.
+...                                        
+...
+...
 file_n = pd.read_csv('[gene_counts output filename]Aligned.sortedByCoord.out_gene.featureCounts.txt', sep="\t", skiprows=1,usecols =['gene_counts_output_ filenameAligned.sortedByCoord.out.bam'])
-res = pd.concat([file1,....,file_n],axis=1, join='outer').sort_index()
-res.to_csv('Gene_counts_merged.txt', index=False, sep=' ')
+res = pd.concat([file1,...,file_n],axis=1, join='outer').sort_index()
+res.to_csv('Name_You_Want.txt', index=False, sep=' ')
 ```
-This will generate the merged gene counts file. 
+This will generate a merged gene counts file in the same directory. 
 
 The python merge script used in malus ambrosia rnaseq pipeline is available in this repository.
 
