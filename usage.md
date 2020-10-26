@@ -70,7 +70,7 @@ mkdir -p project_name
 ```
 Any pipeline related contents should be installed in nf-core folder, the results/output can be saved in project_name folder. By default, the nf-core/rnaseq pipeline output saves to the results and work directory. User can type ``` --outdir /powerplant/workspace/hra-xxx/project_name ```to save results in the specific directory.
 
-Installing and running nf-core/rnaseq on powerPlant requires virtual environment (conda/singularity/docker). Anaconda is avaliable on powerPlant, simply type 
+Installing and running nf-core/rnaseq on powerPlant requires virtual environment (conda/singularity/docker). Anaconda is available on powerPlant, simply type 
 ```bash 
 module load conda 
 ``` 
@@ -112,7 +112,9 @@ User can download specific pipelines with the command
 $ nf-core download rnaseq
 ```
 ## Pipeline configuration & pre-running setup
-A pre-built nf-core/rnaseq pipeline using malus ambrosia data (/input/genomic/plant/Malus/domestica/AGRF_CAGRF17242_CCADVANXX) is avaliable in /powerplant/workspace/hrajaw/nf-core. You can review the output in the results and work directory. This pipeline can be used as a reference in the pipeline usage guide. 
+A pre-built nf-core/rnaseq pipeline using malus ambrosia data (/input/genomic/plant/Malus/domestica/AGRF_CAGRF17242_CCADVANXX) is available in /powerplant/workspace/hrajaw/nf-core.
+You can review the output in the results and work directory.
+This pipeline can be used as a reference in the pipeline usage guide. 
 ### Pipeline configuration
 nf-core [pipeline configuration guide](https://nf-co.re/usage/configuration) has the details of how to configure Nextflow to work on your system
 ### Reference genomes
@@ -132,7 +134,10 @@ params {
 }
 ```
 Then modify nextflow.config file in the same directory by adding ``` includeConfig("name.config") ```. 
-When running the pipeline, type ``` -c /powerplant/workspace/hrajaw/nf-core-rnaseq-1.4.2/configs/nextflow.config ``` to specify the path to the config file. And type ``` --genome Name_You_Want ``` to specify the reference genomes you just configured.   
+
+When running the pipeline, type ``` -c /powerplant/workspace/hrajaw/nf-core-rnaseq-1.4.2/configs/nextflow.config ``` to specify the path to the config file.
+
+And type ``` --genome Name_You_Want ``` to specify the reference genomes you just configured.   
 
 
 ## Running the pipeline
