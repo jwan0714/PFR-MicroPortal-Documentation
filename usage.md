@@ -137,9 +137,21 @@ Then modify nextflow.config file in the same directory by adding ``` includeConf
 
 When running the pipeline, type ``` -c /powerplant/workspace/hrajaw/nf-core-rnaseq-1.4.2/configs/nextflow.config ``` to specify the path to the config file.
 
-And type ``` --genome Name_You_Want ``` to specify the reference genomes you just configured.   
+And type ``` --genome Name_You_Want ``` to specify the reference genomes you just configured. 
 
-
+The config files used for malus ambrosia rnaseq pipeline are available in the same repository. 
+### Pre-running setup
+The genome fasta files often contain a long and complex string filename, because the pipeline uses the input filename as results filename, we can create soft-link with shorter and simplified filename before provide it to the pipeline. 
+Create the soft-link directory under project_name folder
+```bash
+mkdir -p fasta_soft-link
+cd fasta_soft-link
+```
+Then, create the soft-link files with command.
+```bash
+ln -s [file_path/file_name] [virtual_file_path/soft-link_file_name]
+```
+For instance, the soft-link used in
 ## Running the pipeline
  
 The typical command for running the pipeline is as follows:
